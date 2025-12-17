@@ -179,38 +179,49 @@
     const container = document.getElementById('photoContainer');
     const text = document.getElementById('loveText');
 
-    btn.addEventListener('click', () => {
+btn.addEventListener('click', () => {
 
-      if (index < photos.length) {
-        container.innerHTML = `<img src="${photos[index]}" alt="Foto da pessoa amada">`;
-        text.textContent = phrases[index];
-        index++;
+  // 1. Fotos + frases
+  if (index < photos.length) {
+    container.innerHTML = `<img src="${photos[index]}" alt="Foto da pessoa amada">`;
+    text.textContent = phrases[index];
+    index++;
+    return;
+  }
 
-      } else if (index === photos.length) {
-        // 👉 AQUI ESTÁ O AJUSTE PRINCIPAL
-        container.innerHTML = `
-          <div class="final">
-            ❤️<br><br>
-            ${finalMessage}
-            <br><br>
-            <span style="font-size: 1.3rem; font-weight: 400;">
-              ${signatureMessage}
-            </span>
-          </div>
-`;
+  // 2. Mensagem de encerramento (NÃO é o final ainda)
+  if (index === photos.length) {
+    container.innerHTML = `
+      <div class="final">
+        ❤️<br><br>
+        ${finalMessage}
+      </div>
+    `;
+    text.textContent = '';
+    index++;
+    return;
+  }
 
-        text.textContent = '';
-        btn.textContent = 'Ver tudo novamente 🔁';
-        index++;
+  // 3. ASSINATURA → ESSA é a mensagem final
+  if (index === photos.length + 1) {
+    container.innerHTML = `
+      <div class="final">
+        Com muito carinho,<br>
+        Dan Melody
+      </div>
+    `;
+    btn.textContent = 'Ver tudo novamente 🔁';
+    index++;
+    return;
+  }
 
-      } else {
-        // Reinicia tudo
-        index = 0;
-        container.innerHTML = '<div class="placeholder">Clique no botão para começar 💖</div>';
-        text.textContent = '';
-        btn.textContent = 'Mostrar ❤️';
-      }
-    });
+  // 4. Reinício
+  index = 0;
+  container.innerHTML = '<div class="placeholder">Clique no botão para começar 💖</div>';
+  text.textContent = '';
+  btn.textContent = 'Mostrar ❤️';
+});
+
   </script>
 
 </body>
