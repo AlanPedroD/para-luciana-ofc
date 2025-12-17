@@ -171,6 +171,8 @@
 
     const finalMessage = 'Apesar de tudo, sei que você ainda vai morar nas minhas lembranças por um tempo. ❤️';
 
+    const signatureMessage = 'Com muito carinho:<br>Dan Melody';
+
     let index = 0;
 
     const btn = document.getElementById('nextBtn');
@@ -188,10 +190,15 @@
         // 👉 AQUI ESTÁ O AJUSTE PRINCIPAL
         container.innerHTML = `
           <div class="final">
-            ❤️<br>
+            ❤️<br><br>
             ${finalMessage}
+            <br><br>
+            <span style="font-size: 1.3rem; font-weight: 400;">
+              ${signatureMessage}
+            </span>
           </div>
-        `;
+`;
+
         text.textContent = '';
         btn.textContent = 'Ver tudo novamente 🔁';
         index++;
