@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para Você ❤️</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Poppins', sans-serif;
+      padding: 20px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 24px;
+      padding: 32px 24px 40px;
+      max-width: 420px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "❤";
+      position: absolute;
+      font-size: 180px;
+      top: -40px;
+      right: -20px;
+      color: rgba(255, 0, 0, 0.05);
+    }
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.8rem;
+      color: #c9184a;
+      margin-bottom: 12px;
+    }
+
+    .subtitle {
+      color: #6d6875;
+      margin-bottom: 24px;
+    }
+
+    .photo-container {
+      width: 100%;
+      height: 260px;
+      border-radius: 18px;
+      overflow: hidden;
+      background: #f1f1f1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .photo-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      animation: fadeIn 0.8s ease;
+    }
+
+    .placeholder {
+      color: #999;
+      font-size: 0.95rem;
+    }
+
+    button {
+      background: linear-gradient(135deg, #ff4d6d, #c9184a);
+      color: #fff;
+      border: none;
+      padding: 14px 28px;
+      border-radius: 999px;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 10px 20px rgba(201, 24, 74, 0.35);
+      transition: all 0.2s ease;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+    }
+
+    .love-text {
+      margin-top: 20px;
+      color: #6d6875;
+      min-height: 40px;
+    }
+
+    .final {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2rem;
+      color: #c9184a;
+      animation: fadeIn 1s ease;
+      line-height: 1.4;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 2.3rem;
+      }
+
+      .photo-container {
+        height: 220px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>Para Você</h1>
+    <p class="subtitle">Cada clique revela um pedacinho do meu amor…</p>
+
+    <div class="photo-container" id="photoContainer">
+      <div class="placeholder">Clique no botão para começar 💖</div>
+    </div>
+
+    <button id="nextBtn">Mostrar ❤️</button>
+
+    <div class="love-text" id="loveText"></div>
+  </div>
+
+  <script>
+    const photos = [
+      'imagens/foto-luh-01-edit.png',
+      'imagens/foto-luh-02-edit.png',
+      'imagens/foto-luh-03-edit.png',
+      'imagens/foto-luh-04-edit.png'
+    ];
+
+    const phrases = [
+      'Seu sorriso ilumina meus dias.',
+      'Com você, tudo faz sentido.',
+      'Meu coração é completamente seu.',
+      'Eu me perco no seu olhar sem medo, porque sei que é nele que meu coração quer ficar'
+    ];
+
+    const finalMessage = 'Eu te amo mais do que palavras podem explicar. ❤️';
+
+    let index = 0;
+
+    const btn = document.getElementById('nextBtn');
+    const container = document.getElementById('photoContainer');
+    const text = document.getElementById('loveText');
+
+    btn.addEventListener('click', () => {
+
+      if (index < photos.length) {
+        container.innerHTML = `<img src="${photos[index]}" alt="Foto da pessoa amada">`;
+        text.textContent = phrases[index];
+        index++;
+
+      } else if (index === photos.length) {
+        // 👉 AQUI ESTÁ O AJUSTE PRINCIPAL
+        container.innerHTML = `
+          <div class="final">
+            ❤️<br>
+            ${finalMessage}
+          </div>
+        `;
+        text.textContent = '';
+        btn.textContent = 'Ver tudo novamente 🔁';
+        index++;
+
+      } else {
+        // Reinicia tudo
+        index = 0;
+        container.innerHTML = '<div class="placeholder">Clique no botão para começar 💖</div>';
+        text.textContent = '';
+        btn.textContent = 'Mostrar ❤️';
+      }
+    });
+  </script>
+
+</body>
+</html>
