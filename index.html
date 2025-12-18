@@ -203,7 +203,7 @@
     const text = document.getElementById('loveText');
 
 btn.addEventListener('click', () => {
-
+  talkBtn.style.display = 'none';
   // 1. Fotos + frases
   if (index < photos.length) {
     container.innerHTML = `<img src="${photos[index]}" alt="Foto da pessoa amada">`;
