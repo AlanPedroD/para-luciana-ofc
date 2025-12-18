@@ -97,6 +97,24 @@
       transform: translateY(-2px);
     }
 
+.talk-btn {
+  display: none; /* começa escondido */
+  margin-top: 14px;
+  text-decoration: none;
+  background: linear-gradient(135deg, #6a4c93, #3a0ca3);
+  color: #fff;
+  padding: 14px 28px;
+  border-radius: 999px;
+  font-size: 1rem;
+  box-shadow: 0 10px 20px rgba(58, 12, 163, 0.35);
+  transition: all 0.2s ease;
+}
+
+.talk-btn:hover {
+  transform: translateY(-2px);
+}
+
+
     .love-text {
       margin-top: 20px;
       color: #5a0f2e; /* tom vinho escuro */
@@ -148,6 +166,9 @@
     </div>
 
     <button id="nextBtn">Mostrar ❤️</button>
+    <a href="assets/formulario.html" id="talkBtn" class="talk-btn">
+      Falar com Dan 💌
+    </a>
 
     <div class="love-text" id="loveText"></div>
   </div>
@@ -168,6 +189,8 @@
       'Meu coração foi completamente seu.',
       'O seu olhar me prendia, mesmo quando seu coração já estava distante.'
     ];
+
+    const talkBtn = document.getElementById('talkBtn');
 
     const finalMessage = 'Apesar de tudo, sei que você ainda vai morar nas minhas lembranças por um tempo. ❤️';
 
@@ -211,6 +234,7 @@ btn.addEventListener('click', () => {
       </div>
     `;
     btn.textContent = 'Ver tudo novamente 🔁';
+    talkBtn.style.display = 'inline-block'; // MOSTRA o botão
     index++;
     return;
   }
